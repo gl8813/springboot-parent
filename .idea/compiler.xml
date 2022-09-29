@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot-service" />
+        <module name="springboot-common" />
+        <module name="springboot-dao" />
+        <module name="springboot-api" />
+        <module name="springboot-async" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="async" target="1.8" />
+      <module name="springboot-api" target="1.8" />
+      <module name="springboot-async" target="1.8" />
+      <module name="springboot-common" target="1.8" />
+      <module name="springboot-dao" target="1.8" />
+      <module name="springboot-parent" target="1.8" />
+      <module name="springboot-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="async" options="-parameters" />
+      <module name="springboot-api" options="-parameters" />
+      <module name="springboot-async" options="-parameters" />
+      <module name="springboot-common" options="-parameters" />
+      <module name="springboot-dao" options="-parameters" />
+      <module name="springboot-parent" options="-parameters" />
+      <module name="springboot-service" options="-parameters" />
+    </option>
+  </component>
+</project>
