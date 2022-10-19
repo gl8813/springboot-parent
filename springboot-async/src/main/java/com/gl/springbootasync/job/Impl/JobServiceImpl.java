@@ -1,13 +1,9 @@
-package com.gl.springbootasync.service.Impl;
+package com.gl.springbootasync.job.Impl;
 
-import com.gl.springbootasync.HelloJob;
+import com.gl.springbootasync.job.HelloJob;
 import com.gl.springbootasync.utils.JobSchedule;
-import org.quartz.SchedulerException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class JobServiceImpl implements CommandLineRunner {

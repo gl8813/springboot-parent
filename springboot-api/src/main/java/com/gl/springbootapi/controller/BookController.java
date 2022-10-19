@@ -2,7 +2,6 @@ package com.gl.springbootapi.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.gl.springbootasync.HelloJob;
 import com.gl.springbootasync.utils.JobSchedule;
 import com.gl.springbootcommon.constants.ErrorEnum;
 import com.gl.springbootcommon.model.PageBean;

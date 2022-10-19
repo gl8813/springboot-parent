@@ -1,11 +1,9 @@
-package com.gl.springbootasync;
+package com.gl.springbootasync.job;
 
 import cn.hutool.core.date.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-
 import java.util.Calendar;
 
 /**
@@ -13,9 +11,10 @@ import java.util.Calendar;
  */
 @Slf4j
 public class HelloJob implements Job {
+
     @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        //            log.info(jobExecutionContext.getScheduler().getSchedulerName());
+    public void execute(JobExecutionContext jobExecutionContext) {
+
         String jobParam = (String) jobExecutionContext.getJobDetail().getJobDataMap().get("jobParam");
         if (jobParam != null) {
             log.info(jobParam);

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gl.springbootcommon.constants.Constant;
 import com.gl.springbootservice.dto.input.BooksInputDTO;
 import com.gl.springbootservice.dto.input.RemoveBatchInputDTO;
 import com.gl.springbootservice.dto.output.BooksOutputDTO;
@@ -20,12 +21,14 @@ import com.gl.springbootservice.BookService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import cn.hutool.core.bean.BeanUtil;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -40,6 +43,8 @@ import java.util.concurrent.Future;
 @Service
 public class BookServiceImpl extends ServiceImpl<BookMapper, BookDO> implements BookService {
     Logger logger = LoggerFactory.getLogger(BookService.class);
+    @Autowired
+    private Constant constant;
 
     @Override
     @ApiChecked(value = "根据id获取书籍")
@@ -104,6 +109,8 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, BookDO> implements 
     @Async("threadPoolTaskExecutor")
     @ApiChecked(value = "分页获取书籍列表")
     public Future<PageBookOutputDTO> getPage(PageBean pageBean) {
+        boolean flag = Arrays.asList(constant.getName().split(",")).contains("S6210A_Sampler");
+        logger.info("是否新设备："+ flag);
         LambdaQueryWrapper<BookDO> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(BookDO::getStatus, StatusEnum.ENABLE.getCode());
         Page<BookDO> bookDOPage = this.page(pageBean.makePaging(), queryWrapper);
